@@ -3,11 +3,12 @@ on:
   push:
     branches:
       - main
+permissions:
+  contents: write
 
 env:
   GODOT_VERSION: 4.3
   EXPORT_NAME: godot-start
-  PROJECT_PATH: godot-start
 
 jobs:
   export-web:
@@ -27,18 +28,14 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
-          cd $PROJECT_PATH
-          godot --headless --verbose --export-release "HTML5" ../build/web/index.html
+          godot --headless --verbose --export-release "Web" ./build/web/index.html
       - name: Upload Artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
           name: web
           path: build/web
-      - name: Install rsync 📚
-        run: |
-          apt-get update && apt-get install -y rsync
-      - name: Deploy to GitHub Pages 🚀
-        uses: JamesIves/github-pages-deploy-action@releases/v4
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: build/web # The folder the action should deploy.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build/web
