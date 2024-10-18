@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=4 uid="uid://dhsgfbgsaib7m"]
 
-[ext_resource type="Script" path="res://main.gd" id="1_c7oyj"]
-[ext_resource type="PackedScene" uid="uid://cvikgjqk1abp0" path="res://player.tscn" id="1_d7pqy"]
-[ext_resource type="PackedScene" uid="uid://dsfxk1y5q1pt4" path="res://mob.tscn" id="2_ywxse"]
-[ext_resource type="PackedScene" uid="uid://doew4ytpshrw0" path="res://hud.tscn" id="4_4yenq"]
+[ext_resource type="Script" path="res://nodes/main.gd" id="1_c7oyj"]
+[ext_resource type="PackedScene" uid="uid://cvikgjqk1abp0" path="res://nodes/player.tscn" id="1_d7pqy"]
+[ext_resource type="PackedScene" uid="uid://dsfxk1y5q1pt4" path="res://nodes/mob.tscn" id="2_ywxse"]
+[ext_resource type="PackedScene" uid="uid://doew4ytpshrw0" path="res://nodes/hud.tscn" id="4_4yenq"]
 [ext_resource type="AudioStream" uid="uid://7e7fbkbw6cyu" path="res://art/gameover.wav" id="6_5tw7t"]
 
 [sub_resource type="Curve2D" id="Curve2D_kwidh"]
