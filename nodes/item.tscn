@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://item_scene"]
+
+[ext_resource type="Texture2D" path="res://art/item.png" id="1"]
+[ext_resource type="Script" path="res://nodes/item.gd" id="2"]
+
+[node name="Item" type="Area2D"]
+texture = ExtResource("1")
+script = ExtResource("2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = CapsuleShape2D {
+  radius = 16.0
+  height = 32.0
+}
