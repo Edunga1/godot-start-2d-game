@@ -1,12 +1,14 @@
 extends Node
 
 @export var mob_scene: PackedScene
+@export var item_scene: PackedScene
 var score
 
 
 func game_over() -> void:
   $ScoreTimer.stop()
   $MobTimer.stop()
+  $ItemTimer.stop()
   $HUD.show_game_over()
   $Music.stop()
   $DeathSound.play()
@@ -19,6 +21,7 @@ func new_game() -> void:
   $HUD.update_score(score)
   $HUD.show_message("Get Ready")
   get_tree().call_group("mobs", "queue_free")
+  get_tree().call_group("items", "queue_free")
   $Music.play()
 
 
@@ -33,6 +36,7 @@ func _process(delta: float) -> void:
 func _on_start_timer_timeout() -> void:
   $MobTimer.start()
   $ScoreTimer.start()
+  $ItemTimer.start()
 
 
 func _on_score_timer_timeout() -> void:
@@ -56,3 +60,10 @@ func _on_mob_timer_timeout() -> void:
   mob.linear_velocity = velocity.rotated(direction)
 
   add_child(mob)
+
+
+func _on_item_timer_timeout() -> void:
+  var item = item_scene.instantiate()
+  var item_spawn_location = $ItemSpawnLocation
+  item.position = item_spawn_location.position
+  add_child(item)
